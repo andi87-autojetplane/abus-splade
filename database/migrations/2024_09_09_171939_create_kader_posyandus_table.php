@@ -39,6 +39,10 @@ return new class extends Migration
             $table->foreignId('city_id')->constrained();
             $table->foreignId('province_id')->constrained();
             $table->foreignId('country_id')->constrained();
+            $table->string('latittude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('altittude')->nullable();
+            $table->string('precision')->nullable();
             $table->char('zip_code', 5)->nullable();
             $table->foreignId('puskesmas_id')->constrained();
             $table->foreignId('pustu_id')->constrained();

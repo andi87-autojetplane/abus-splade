@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_fingerprint')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('citizen_id')->constrained()->cascadeOnDelete();
             $table->string('nip')->nullable();
@@ -35,8 +36,16 @@ return new class extends Migration
             $table->foreignId('city_id')->constrained();
             $table->foreignId('province_id')->constrained();
             $table->foreignId('country_id')->constrained();
+            $table->string('latittude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('altittude')->nullable();
+            $table->string('precision')->nullable();
             $table->char('zip_code', 5)->nullable();
             $table->string('status_ASN');
+            $table->string("no_hp1",13)->nullable();
+            $table->string("no_hp2",13)->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
         });
     }

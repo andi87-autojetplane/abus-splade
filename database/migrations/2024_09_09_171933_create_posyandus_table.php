@@ -23,8 +23,10 @@ return new class extends Migration
             $table->char('zip_code',5)->nullable();
             $table->tinyinteger('rt')->nullable();
             $table->tinyInteger('rw')->nullable();
+            $table->string('latittude')->nullable();
             $table->string('longitude')->nullable();
-            $table->string('lattitude')->nullable();
+            $table->string('altittude')->nullable();
+            $table->string('precision')->nullable();
             $table->string('pic_name')->nullable();
             $table->string('no_pic')->nullable();
             $table->foreignId('puskesmas_id')->constrained()->cascadeOnDelete();

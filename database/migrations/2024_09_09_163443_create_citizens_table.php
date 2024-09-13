@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('citizens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
+            $table->foreignId('family_id')->nullable();
             $table->string('ihs_number')->nullable();
             $table->string("no_rm")->nullable();
             $table->string("nik",16)->nullable();
@@ -74,6 +75,7 @@ return new class extends Migration
             $table->string("e_ktp_pic");
             $table->string("status_hidup");
             $table->string("keterangan_cacat")->nullable();
+            $table->tinyInteger('anak_ke');
             $table->timestamps();
         });
     }

@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('families', function (Blueprint $table) {
+        Schema::create('perguruantinggis', function (Blueprint $table) {
             $table->id();
-            $table->string("no_kk",16)->nullable();
-            $table->string("name");
-            $table->string("first_name")->nullable();
-            $table->string("middle_name")->nullable();
-            $table->string("last_name")->nullable();
-            $table->string("front_title")->nullable();
-            $table->string("back_degree")->nullable();
+            $table->string('kode_pt')->nullable();
+            $table->string('name');
+            $table->char('tahun_berdiri',4);
+            $table->char('akreditasi',1);
+            $table->string('kategori_keilmuan');
+            $table->string('jenis_universitas');
+            $table->string('jenis_ptn_pts');
             $table->string("address");
             $table->foreignId('country_id')->constrained()->cascadeOnDelete();
             //$table->string("country_name")->nullable();
@@ -40,14 +40,9 @@ return new class extends Migration
             $table->char('zip_code', 5)->nullable();
             $table->string("rt")->nullable();
             $table->string("rw")->nullable();
-            $table->string("nama_kk",60);
-            $table->string("no_hp1",13)->nullable();
-            $table->string("no_hp2",13)->nullable();
+            $table->string('no_telp')->nullable();
+            $table->string('no_fax')->nullable();
             $table->string('email')->nullable();
-            $table->string("kode_id_dihubungi")->nullable();
-            $table->string("nama_kontak")->nullable();
-            $table->string("kk_pic")->nullable();
-            $table->string('home_pic')->nullable();
             $table->timestamps();
         });
     }
@@ -57,6 +52,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('families');
+        Schema::dropIfExists('perguruantinggis');
     }
 };

@@ -14,6 +14,35 @@ return new class extends Migration
         Schema::create('home_visits', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_id')->constrained()->cascadeOnDelete();
+            $table->string("no_kk",16)->nullable();
+            $table->string("name");
+            $table->string("first_name")->nullable();
+            $table->string("middle_name")->nullable();
+            $table->string("last_name")->nullable();
+            $table->string("front_title")->nullable();
+            $table->string("back_degree")->nullable();
+            $table->string("address");
+            $table->foreignId('country_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('province_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('district_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('village_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('dusun_id')->constrained()->cascadeOnDelete();
+            $table->string('latittude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('altittude')->nullable();
+            $table->string('precision')->nullable();
+            $table->char('zip_code', 5)->nullable();
+            $table->string("rt")->nullable();
+            $table->string("rw")->nullable();
+            $table->string("nama_kk",60);
+            $table->string("no_hp1",13)->nullable();
+            $table->string("no_hp2",13)->nullable();
+            $table->string('email')->nullable();
+            $table->string("kode_id_dihubungi")->nullable();
+            $table->string("nama_kontak")->nullable();
+            $table->string("kk_pic")->nullable();
+            $table->string('home_pic')->nullable();
             $table->integer('sum_family');
             $table->integer('sum_pregnant');
             $table->integer('sum_newborn'); // Usia sampai dengan 3 bulan
@@ -42,6 +71,11 @@ return new class extends Migration
             $table->enum('atshma', ['Yes', 'No'])->change();
             $table->enum('cancer', ['Yes', 'No'])->change();
             $table->enum('hypercholesterol', ['Yes', 'No'])->change();
+            $table->foreignId('kader_posyandu_id')->nullable();
+            $table->foreignId('employee_id')->nullable();
+            $table->integer('kunjungan_ke');
+            $table->date('tanggal_input');
+            $table->date('tanggal_intervensi');
             $table->timestamps();
         });
     }
