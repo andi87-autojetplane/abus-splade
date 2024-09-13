@@ -25,6 +25,10 @@ return new class extends Migration
             $table->string('birth_place');
             $table->string('city_id_birth_place');
             $table->date('birth_date');
+            $table->string("no_hp1",13)->nullable();
+            $table->string("no_hp2",13)->nullable();
+            $table->string('no_hp')->nullable();
+            $table->string('email')->nullable();
             $table->string('address');
             $table->string('dusun')->nullable();
             $table->foreignId('dusun_id')->nullable();
