@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('districts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
+            $table->string('district_code');
             $table->string('name',60);
             $table->timestamps();
         });
