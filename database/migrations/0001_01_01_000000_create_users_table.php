@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('is_banned')->default(0);
             $table->integer('is_active')->default(0);
-            $table->boolean('is_admin')->default(false);
+            $table->boolean('is_admin')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

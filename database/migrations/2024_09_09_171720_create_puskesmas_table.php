@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('precision')->nullable();
             $table->string('pic_name')->nullable();
             $table->string('no_pic')->nullable();
+            $table->foreignId('citizen_id')->constrained()->cascadeOnDelete();
             $table->string('email');
             $table->timestamps();
         });

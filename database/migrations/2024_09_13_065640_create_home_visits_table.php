@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('home_visits', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('employee_id')->constrained()->cascadeOnDelete();
             $table->foreignId('family_id')->constrained()->cascadeOnDelete();
             $table->string("no_kk",16)->nullable();
             $table->string("nama_kk",60);
@@ -51,7 +52,6 @@ return new class extends Migration
             $table->enum('cancer', ['Yes', 'No'])->change();
             $table->enum('hypercholesterol', ['Yes', 'No'])->change();
             $table->foreignId('kader_posyandu_id')->nullable();
-            $table->foreignId('employee_id')->nullable();
             $table->integer('kunjungan_ke');
             $table->date('tanggal_input');
             $table->date('tanggal_intervensi');

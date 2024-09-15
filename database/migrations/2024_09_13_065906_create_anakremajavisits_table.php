@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('family_id')->constrained()->cascadeOnDelete();
             $table->foreignId('citizen_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('kader_posyandu_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('employee_id')->constrained()->cascadeOnDelete();
             $table->integer('kunjungan_ke');
             $table->date('tanggal_input');
             $table->date('tanggal_intervensi');

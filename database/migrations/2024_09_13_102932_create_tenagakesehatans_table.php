@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('tenagakesehatans', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

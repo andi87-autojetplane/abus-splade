@@ -41,7 +41,9 @@ return new class extends Migration
             $table->string('altittude')->nullable();
             $table->string('precision')->nullable();
             $table->char('zip_code', 5)->nullable();
-            $table->string('status_ASN');
+            $table->string('status_ASN')->nullable();
+            $table->string('status_pegawai')->nullable();
+            $table->string('jenis_pegawai');
             $table->string("no_hp1",13)->nullable();
             $table->string("no_hp2",13)->nullable();
             $table->string('no_hp')->nullable();
