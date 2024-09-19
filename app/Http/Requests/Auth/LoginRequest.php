@@ -11,6 +11,7 @@ use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
 {
+    protected $inputType;
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -29,7 +30,9 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'string', 'email'],
+            'email' => ['required_without:nik', 'string', 'email', 'exists:users,email'],
+           // 'username' => ['required_without:email,nik', 'string', 'exists:users,username'],
+            'nik' => ['required_without:email', 'string:16', 'exists:users,nik'],
             'password' => ['required', 'string'],
         ];
     }
@@ -45,11 +48,11 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
-            RateLimiter::hit($this->throttleKey());
+        if (! Auth::attempt($this->only($this->inputType, 'password'), $this->boolean('remember'))) {
+            RateLimiter::hit($this->throttleKey(),300 );
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                $this->inputType => trans('auth.failed'),
             ]);
         }
 
@@ -65,7 +68,7 @@ class LoginRequest extends FormRequest
      */
     public function ensureIsNotRateLimited()
     {
-        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 5)) {
+        if (! RateLimiter::tooManyAttempts($this->throttleKey(), 3)) {
             return;
         }
 
@@ -89,5 +92,26 @@ class LoginRequest extends FormRequest
     public function throttleKey()
     {
         return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
+    }
+
+    protected function prepareForValidation()
+    {
+        $this->inputType = filter_var($this->input('input_type'), FILTER_VALIDATE_EMAIL) ? 'email' : 'nik';
+        $this->merge([$this->inputType => $this->input('input_type')]);
+        // $login = $this->input('input_type');
+        // if(is_numeric($login)){
+        //     $field = 'nik';
+        // } elseif (filter_var($login, FILTER_VALIDATE_EMAIL)) {
+        //     $field = 'email';
+        // } else {
+        //     $field = 'username';
+        // }
+
+        // $this->merge([$this->inputType => $field]);
+        // request()->merge([$field => $login]);
+        // return [
+        //     $field => $login,
+        //     'password' => $request->get('password'),
+        // ];
     }
 }

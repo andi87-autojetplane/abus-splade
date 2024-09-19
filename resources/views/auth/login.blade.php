@@ -5,8 +5,14 @@
 
         <x-splade-form action="{{ route('login') }}" class="space-y-4">
             <!-- Email Address -->
-            <x-splade-input id="email" type="email" name="email" :label="__('Email')" required autofocus />
-            <x-splade-input id="password" type="password" name="password" :label="__('Password')" required autocomplete="current-password" />
+            <x-splade-input id="input_type" type="text" name="input_type" :label="__('Email/NIK')" autofocus />
+            <x-splade-errors>
+                <p class="text-red-500 font-mono text-sm" v-if="errors.has('email')" v-text="errors.first('email')" />
+            </x-splade-errors>
+            <x-splade-errors>
+                <p class="text-red-500 font-mono text-sm" v-if="errors.has('nik')" v-text="errors.first('nik')" />
+            </x-splade-errors>
+            <x-splade-input id="password" type="password" name="password" :label="__('Password')" autocomplete="current-password" />
             <x-splade-checkbox id="remember_me" name="remember" :label="__('Remember me')" />
 
             <div class="flex items-center justify-end">

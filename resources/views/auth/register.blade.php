@@ -7,7 +7,7 @@
             <x-splade-input id="phone" type="text" name="phone" :label="__('No. Telp')" required />
             <x-splade-input id="username" type="text" name="username" :label="__('Username')" required />
             <x-splade-input id="password" type="password" name="password" :label="__('Password')" required autocomplete="new-password" />
-            <x-splade-input id="password_confirmation" type="password" name="password_confirmation" :label="__('Confirm Password')" required />
+            <x-splade-input id="password_confirmation" type="password" name="password_confirmation" :label="__('Ulangi Password')" required />
 
             <div class="flex items-center justify-end">
                 <Link class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
