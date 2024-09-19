@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <script setup>
 
 </script>
+=======
+<script setup></script>
+>>>>>>> 4dda2226763d47f32db6b8d0c71c326040c248ee
 <template>
     <aside
         class="flex flex-col w-64 min-h-screen px-5 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700"

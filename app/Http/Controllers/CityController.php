@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
+<<<<<<< HEAD
     /**
      * Display a listing of the resource.
      */
@@ -61,4 +62,7 @@ class CityController extends Controller
     {
         //
     }
+=======
+    //
+>>>>>>> 4dda2226763d47f32db6b8d0c71c326040c248ee
 }
