@@ -3,6 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\DusunController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\SekolahController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VillageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,8 +51,17 @@ Route::middleware('splade')->group(function () {
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+    Route::middleware('auth')->prefix('/admin')->name('admin.')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+        Route::resource('/user', UserController::class);
+        Route::resource('/employees', EmployeeController::class);
+        Route::resource('/countries', CountryController::class);
+        Route::resource('/provinces', ProvinceController::class);
+        Route::resource('/cities', CityController::class);
+        Route::resource('/districts', DistrictController::class);
+        Route::resource('/villages', VillageController::class);
+        Route::resource('/dusun', DusunController::class);
+        Route::resource('/sekolah', SekolahController::class);
     });
 
     require __DIR__.'/auth.php';
