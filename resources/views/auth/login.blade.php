@@ -7,10 +7,10 @@
             <!-- Email Address -->
             <x-splade-input id="input_type" type="text" name="input_type" :label="__('Email/NIK')" autofocus />
             <x-splade-errors>
-                <p class="text-red-500 font-mono text-sm" v-if="errors.has('email')" v-text="errors.first('email')" />
+                <p class="text-red-500 font-mono text-sm tracking-tight" v-if="errors.has('email')" v-text="errors.first('email')" />
             </x-splade-errors>
             <x-splade-errors>
-                <p class="text-red-500 font-mono text-sm" v-if="errors.has('nik')" v-text="errors.first('nik')" />
+                <p class="text-red-500 font-mono text-sm tracking-tight" v-if="errors.has('nik')" v-text="errors.first('nik')" />
             </x-splade-errors>
             <x-splade-input id="password" type="password" name="password" :label="__('Password')" autocomplete="current-password" />
             <x-splade-checkbox id="remember_me" name="remember" :label="__('Remember me')" />
