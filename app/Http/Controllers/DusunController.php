@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class DusunController extends Controller
 {
-<<<<<<< HEAD
     /**
      * Display a listing of the resource.
      */
@@ -62,7 +61,5 @@ class DusunController extends Controller
     {
         //
     }
-=======
-    //
->>>>>>> 4dda2226763d47f32db6b8d0c71c326040c248ee
+
 }

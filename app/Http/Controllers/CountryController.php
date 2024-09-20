@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
-<<<<<<< HEAD
+
     /**
      * Display a listing of the resource.
      */
@@ -62,7 +62,5 @@ class CountryController extends Controller
     {
         //
     }
-=======
-    //
->>>>>>> 4dda2226763d47f32db6b8d0c71c326040c248ee
+
 }
